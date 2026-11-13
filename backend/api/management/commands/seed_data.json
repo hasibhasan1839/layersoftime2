@@ -1,0 +1,217 @@
+{
+  "contact": {
+    "address": "Dhaka, Bangladesh",
+    "email": "layers.time28@gmail.com",
+    "phone_no": "+880 1688 483030"
+  },
+  "projects": [
+    {
+      "slug": "brick-and-sage-residence",
+      "name": "Brick & Sage Residence",
+      "project_type": "Residential",
+      "storeys": "G + 4",
+      "status": "Design proposal",
+      "summary": "A compact urban home where a solid brick spine anchors light, sage-toned floor plates and deep balconies.",
+      "description": "The building is organised around a single exposed-brick core that carries the stair and services. Everything else is lighter: white slab edges, sage infill walls and full-height glazing that opens onto generous balconies.\n\nA slatted pergola caps the roof terrace, filtering the afternoon sun and giving the top floor an outdoor room. The final view explores an alternative façade in terracotta and timber with planting on every level.",
+      "images": [
+        "projects/brick-sage-1.jpg",
+        "projects/brick-sage-2.jpg",
+        "projects/brick-sage-3.jpg",
+        "projects/brick-sage-4.jpg"
+      ]
+    },
+    {
+      "slug": "oculus-house",
+      "name": "Oculus House",
+      "project_type": "Residential",
+      "storeys": "G + 4",
+      "status": "Design proposal",
+      "summary": "A brick tower pierced by a circular opening frames the sky and gives the street façade its identity.",
+      "description": "A vertical brick plane runs the full height of the front elevation and is cut at the top by a perfect circle — a window to the sky from the roof terrace and a quiet landmark from the street.\n\nEither side, stacked balconies carry hanging planters, softening the façade over time as the greenery grows in. Timber-finish shutters and a raised planted plinth bring warmth and privacy to the ground floor.",
+      "images": [
+        "projects/oculus-1.jpg",
+        "projects/oculus-2.jpg",
+        "projects/oculus-3.jpg",
+        "projects/oculus-4.jpg"
+      ]
+    },
+    {
+      "slug": "green-terrace-apartments",
+      "name": "Green Terrace Apartments",
+      "project_type": "Multi-family housing",
+      "storeys": "G + 7",
+      "status": "Design proposal",
+      "summary": "A mid-rise apartment block where brick-clad bays and planted balconies break down a long street frontage.",
+      "description": "The long elevation is divided into a rhythm of white frames and recessed brick bays. Each bay carries its own column of planted balconies, so the building reads as a series of vertical gardens rather than a single mass.\n\nAt street level a landscaped forecourt and screened parking keep the ground plane open and walkable.",
+      "images": [
+        "projects/terrace-1.jpg",
+        "projects/terrace-2.jpg",
+        "projects/terrace-3.jpg"
+      ]
+    },
+    {
+      "slug": "lakeside-retreat",
+      "name": "Lakeside Retreat",
+      "project_type": "Private residence",
+      "storeys": "G + 1",
+      "status": "Concept",
+      "summary": "Stacked stone volumes cantilever towards the water, catching the last of the evening light.",
+      "description": "Two offset volumes clad in rough stone are stacked and shifted so the upper floor reaches out over the terrace towards the lake.\n\nThe composition is designed around sunset: deep overhangs shade the glazing through the day, while the water reflects the warm light back into the living spaces in the evening.",
+      "images": [
+        "projects/lakeside-1.jpg"
+      ]
+    },
+    {
+      "slug": "brick-fin-pavilion",
+      "name": "Brick Fin Pavilion",
+      "project_type": "Public / Cultural",
+      "storeys": "Single volume",
+      "status": "Concept",
+      "summary": "A curved brick enclosure lined with tall fins that turn the interior into a lantern after dark.",
+      "description": "A single, gently curving brick wall wraps the space and is entered through a low arched opening. Along the long sides the wall dissolves into a series of tall brick fins that let light and air filter through.\n\nBy day the fins cast moving shadows across the floor; at night the pavilion glows from within, its rhythm visible from across the landscape.",
+      "images": [
+        "projects/brick-fin-1.jpg",
+        "projects/brick-fin-2.jpg",
+        "projects/brick-fin-3.jpg"
+      ]
+    },
+    {
+      "slug": "white-courtyard-villa",
+      "name": "White Courtyard Villa",
+      "project_type": "Private residence",
+      "storeys": "G + 1",
+      "status": "Design proposal",
+      "summary": "Simple white volumes arranged around a garden, tied together by a sculptural spiral stair.",
+      "description": "The house is composed of plain white blocks set into a lush garden, each one framing a different view. Recessed balconies and slender black railings keep the forms crisp.\n\nA timber spiral stair rises through an open terrace between the volumes, linking the roof gardens and becoming the centrepiece of the plan.",
+      "images": [
+        "projects/courtyard-1.jpg",
+        "projects/courtyard-2.jpg",
+        "projects/courtyard-3.jpg"
+      ]
+    }
+  ],
+  "drawings": [
+    {
+      "name": "Red brick façade",
+      "type": "Watercolour",
+      "image": "drawings/d02.jpg"
+    },
+    {
+      "name": "Corridor of discs",
+      "type": "Pen studies",
+      "image": "drawings/d12.jpg"
+    },
+    {
+      "name": "Domed gateway",
+      "type": "Ink & wash",
+      "image": "drawings/d03.jpg"
+    },
+    {
+      "name": "Cylinders and grids",
+      "type": "Pen studies",
+      "image": "drawings/d07.jpg"
+    },
+    {
+      "name": "House under the canopy",
+      "type": "Ink & wash",
+      "image": "drawings/d04.jpg"
+    },
+    {
+      "name": "Twisting columns",
+      "type": "Concept",
+      "image": "drawings/d09.jpg"
+    },
+    {
+      "name": "Concept notes",
+      "type": "Concept",
+      "image": "drawings/d05.jpg"
+    },
+    {
+      "name": "Folded planes",
+      "type": "Pen studies",
+      "image": "drawings/d08.jpg"
+    },
+    {
+      "name": "Worn boots, colour swatches",
+      "type": "Watercolour",
+      "image": "drawings/d01.jpg"
+    },
+    {
+      "name": "Disc wall study",
+      "type": "Pen studies",
+      "image": "drawings/d13.jpg"
+    },
+    {
+      "name": "River edge",
+      "type": "Concept",
+      "image": "drawings/d10.jpg"
+    },
+    {
+      "name": "Perspective with fineliners",
+      "type": "Pen studies",
+      "image": "drawings/d06.jpg"
+    },
+    {
+      "name": "Fractured volume",
+      "type": "Pen studies",
+      "image": "drawings/d11.jpg"
+    }
+  ],
+  "photographs": [
+    {
+      "name": "Rickshaw rest",
+      "type": "Monochrome",
+      "image": "photography/p04.jpg"
+    },
+    {
+      "name": "Glass and grid",
+      "type": "Monochrome",
+      "image": "photography/p05.jpg"
+    },
+    {
+      "name": "Monsoon road",
+      "type": "Colour",
+      "image": "photography/p01.jpg"
+    },
+    {
+      "name": "Afternoon nap",
+      "type": "Monochrome",
+      "image": "photography/p10.jpg"
+    },
+    {
+      "name": "Footbridge at dusk",
+      "type": "Colour",
+      "image": "photography/p02.jpg"
+    },
+    {
+      "name": "Morning tea",
+      "type": "Monochrome",
+      "image": "photography/p06.jpg"
+    },
+    {
+      "name": "Crossing",
+      "type": "Colour",
+      "image": "photography/p03.jpg"
+    },
+    {
+      "name": "Wires and palm",
+      "type": "Monochrome",
+      "image": "photography/p09.jpg"
+    },
+    {
+      "name": "Stacked chairs",
+      "type": "Monochrome",
+      "image": "photography/p08.jpg"
+    },
+    {
+      "name": "Brick under canopy",
+      "type": "Monochrome",
+      "image": "photography/p11.jpg"
+    },
+    {
+      "name": "Sleeping under the wheel",
+      "type": "Colour",
+      "image": "photography/p07.jpg"
+    }
+  ]
+}

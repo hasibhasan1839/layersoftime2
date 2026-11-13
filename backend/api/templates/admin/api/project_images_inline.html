@@ -1,0 +1,32 @@
+{# "Project images" section: a multi-file picker on top, then Django's normal table of saved images. #}
+{% with upload=adminform.form.gallery_images %}
+<fieldset class="module" id="gallery-upload">
+  <h2>Upload project images</h2>
+  <div class="form-row{% if upload.errors %} errors{% endif %}">
+    {{ upload.errors }}
+    <div class="flex-container">
+      <label for="{{ upload.id_for_label }}">Choose images:</label>
+      {{ upload }}
+    </div>
+    <div class="help">{{ upload.help_text }}</div>
+    <ul id="gallery-upload-list" style="margin:8px 0 0; padding-left:18px;"></ul>
+  </div>
+</fieldset>
+<script>
+  // Show the names of the chosen files so it is clear how many will be uploaded.
+  (function () {
+    var input = document.getElementById("{{ upload.id_for_label }}");
+    var list = document.getElementById("gallery-upload-list");
+    if (!input || !list) { return; }
+    input.addEventListener("change", function () {
+      list.innerHTML = "";
+      Array.prototype.forEach.call(input.files, function (file) {
+        var li = document.createElement("li");
+        li.textContent = file.name;
+        list.appendChild(li);
+      });
+    });
+  })();
+</script>
+{% endwith %}
+{% include "admin/edit_inline/tabular.html" %}

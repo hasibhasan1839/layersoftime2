@@ -1,0 +1,19 @@
+.strata { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.course { height: 6.5rem; }
+.link { position: relative; display: block; height: 100%; overflow: hidden; border-bottom: 4px solid var(--plaster); color: var(--plaster); text-decoration: none; }
+.link:hover { color: var(--plaster); }
+.image { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; aspect-ratio: auto; object-fit: cover; }
+.link::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(20 26 23 / 0.78), rgb(20 26 23 / 0) 65%); }
+.label { position: absolute; z-index: 1; inset: 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-inline: 1.25rem; }
+.name { font-family: var(--font-display); font-size: clamp(1.5rem, 3.4vw, 2.5rem); line-height: 1; }
+.meta { font-size: 0.875rem; }
+
+@media (min-width: 40rem) {
+  .strata { height: clamp(26rem, 68vh, 40rem); }
+  .course { flex: 1 1 0; height: auto; min-height: 3.25rem; padding-left: 0; transition: flex-grow 0.55s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  /* Brickwork bond: every second course is set back. */
+  .course:nth-child(even) { padding-left: clamp(1rem, 4vw, 3.5rem); }
+  .strata:not(:hover, :focus-within) .course:first-child,
+  .course:hover,
+  .course:focus-within { flex-grow: 6; }
+}
