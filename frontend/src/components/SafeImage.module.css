@@ -1,7 +1,0 @@
-.placeholder {
-  min-height: 8rem;
-  aspect-ratio: 4 / 3;
-  background:
-    repeating-linear-gradient(0deg, transparent 0 1.1rem, rgb(28 36 32 / 0.12) 1.1rem 1.2rem),
-    var(--sage-soft);
-}

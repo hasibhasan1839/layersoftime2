@@ -1,0 +1,13 @@
+node_modules
+dist
+.DS_Store
+.claude
+
+# Original image folders; the site uses the copies in public/images
+/drawing
+/photography
+/project
+
+# local environment
+.env*
+!.env.example

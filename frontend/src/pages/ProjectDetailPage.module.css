@@ -1,7 +1,0 @@
-.back { margin: 1.5rem 0 0; }
-.header { padding-block: 1rem 2rem; }
-.summary { margin: 1rem 0 0; font-size: 1.25rem; color: var(--ink-soft); }
-.facts { display: flex; flex-wrap: wrap; gap: 1rem 3rem; margin: 2rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--line); }
-.facts dt { font-size: 0.875rem; color: var(--ink-soft); }
-.facts dd { margin: 0; font-size: 1.125rem; }
-.body { margin-bottom: 2.5rem; font-size: 1.0625rem; line-height: 1.75; }

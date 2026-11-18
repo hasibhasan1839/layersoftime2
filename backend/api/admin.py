@@ -10,10 +10,13 @@ from .models import (
     Competition,
     CompetitionAward,
     Contact,
+    ContactMessage,
     Drawing,
     InteriorDesign,
     InteriorDesignType,
     Photography,
+    Professional,
+    ProfessionalExpertise,
     Project,
     ProjectImage,
     User,
@@ -188,9 +191,41 @@ class InteriorDesignAdmin(admin.ModelAdmin):
     list_filter = ("design_type",)
 
 
+class ProfessionalExpertiseInline(admin.TabularInline):
+    model = ProfessionalExpertise
+    extra = 1
+
+
+@admin.register(Professional)
+class ProfessionalAdmin(admin.ModelAdmin):
+    inlines = [ProfessionalExpertiseInline]
+    prepopulated_fields = {"slug": ("name",)}
+    list_display = ("name", "designation", "experience", "is_active", "sorting_order", "updated_at")
+    list_editable = ("sorting_order", "is_active")
+    list_filter = ("is_active",)
+    search_fields = ("name", "designation", "specialization")
+    fieldsets = (
+        ("Identity", {"fields": ("name", "slug", "designation", "photo", "tagline")}),
+        ("Profile", {"fields": ("bio", "qualifications", "specialization", "experience", "location")}),
+        ("Contact", {"fields": ("email", "phone_no", "linkedin", "website")}),
+        ("Display", {"fields": ("is_active", "sorting_order")}),
+    )
+
+
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ("email", "phone_no", "address")
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "subject", "is_read", "created_at")
+    list_filter = ("is_read", "created_at")
+    search_fields = ("name", "email", "subject", "message")
+    readonly_fields = ("name", "email", "phone_no", "subject", "message", "created_at")
+
+    def has_add_permission(self, request):
+        return False  # messages only ever arrive from the public form
 
 
 class CompetitionAwardInline(admin.TabularInline):
@@ -214,6 +249,8 @@ class CompetitionAdmin(RowDeleteMixin, admin.ModelAdmin):
         return Competition.visible().order_by(*ordering)
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        # Any project may be picked here, not just ones already flagged: saving the competition
+        # switches the chosen project to "Competition" for you (see Competition.save).
         if db_field.name == "project":
-            kwargs["queryset"] = Project.objects.filter(in_competition=True)
+            kwargs["empty_label"] = "(no project — standalone entry)"
         return super().formfield_for_foreignkey(db_field, request, **kwargs)

@@ -200,15 +200,93 @@ class InteriorDesign(TimeStampedModel, SortableModel):
 
 
 # ---------------------------------------------------------------------------
+# Professional  (the people shown on the "Our Professionals" page)
+# ---------------------------------------------------------------------------
+class Professional(TimeStampedModel, SortableModel):
+    """A member of the studio. One row = one full profile section on the public page."""
+
+    name = models.CharField(max_length=150)
+    slug = models.SlugField(max_length=170, unique=True, blank=True)
+    designation = models.CharField(max_length=150)  # e.g. "Principal Architect"
+    photo = models.ImageField(upload_to="professionals/", blank=True, null=True, validators=[validate_image_extension])
+
+    # Short line under the name on the card / section head
+    tagline = models.CharField(max_length=250, blank=True)
+    # Full text. A blank line starts a new paragraph (same convention as Project.description).
+    bio = models.TextField(blank=True)
+
+    qualifications = models.CharField(max_length=300, blank=True)  # e.g. "B.Arch (BUET), M.Arch (NUS)"
+    specialization = models.CharField(max_length=300, blank=True)  # e.g. "Residential · Heritage reuse"
+    experience = models.CharField(max_length=100, blank=True)  # e.g. "12 years"
+    location = models.CharField(max_length=150, blank=True)
+
+    email = models.EmailField(blank=True)
+    phone_no = models.CharField(max_length=30, blank=True)
+    linkedin = models.URLField(blank=True)
+    website = models.URLField(blank=True)
+
+    is_active = models.BooleanField(default=True)  # False = hidden from the public page
+
+    class Meta:
+        ordering = ["sorting_order", "id"]
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.name) or "professional"
+            slug, n = base, 2
+            while Professional.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug, n = f"{base}-{n}", n + 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.name} — {self.designation}"
+
+
+class ProfessionalExpertise(SortableModel):
+    """One bullet in the "Areas of expertise" list of a professional."""
+
+    professional = models.ForeignKey(Professional, related_name="expertise", on_delete=models.CASCADE)
+    label = models.CharField(max_length=120)
+
+    class Meta:
+        ordering = ["sorting_order", "id"]
+
+    def __str__(self):
+        return self.label
+
+
+# ---------------------------------------------------------------------------
 # Contact  (studio contact details shown on the Contact page)
 # ---------------------------------------------------------------------------
 class Contact(models.Model):
     address = models.CharField(max_length=300)
     email = models.EmailField()
     phone_no = models.CharField(max_length=30)
+    # What the map pin points at, when that is not simply the address above:
+    # "lat,lng" coordinates (most precise) or any Google Maps search text.
+    # Left blank, the map falls back to searching for `address`.
+    map_location = models.CharField(max_length=300, blank=True)
 
     def __str__(self):
         return self.email
+
+
+class ContactMessage(TimeStampedModel):
+    """One submission from the "Send us a message" form on the Contact page."""
+
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    phone_no = models.CharField(max_length=30, blank=True)
+    subject = models.CharField(max_length=200, blank=True)
+    message = models.TextField()
+    is_read = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.name} — {self.subject or 'no subject'}"
 
 
 # ---------------------------------------------------------------------------
@@ -231,6 +309,15 @@ class Competition(TimeStampedModel, SortableModel):
     def visible(cls):
         """Rows shown in the Competitions section: the project chose "Competition" (or the row has no project)."""
         return cls.objects.filter(models.Q(project__isnull=True) | models.Q(project__in_competition=True))
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        # Picking a project here is the mirror image of choosing "Competition" on the project form:
+        # both mean "this project belongs in the Competitions section". Without the flag this row
+        # would be filtered out by visible() and disappear the moment it was saved.
+        # update() is used rather than project.save() so Project.save() does not run and add a second row.
+        if self.project_id:
+            Project.objects.filter(pk=self.project_id, in_competition=False).update(in_competition=True)
 
     def __str__(self):
         return self.name

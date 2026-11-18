@@ -1,8 +1,0 @@
-.card { display: block; text-decoration: none; }
-.card:hover { color: inherit; }
-.image { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: filter 0.3s; }
-.card:hover .image { filter: brightness(0.92); }
-.name { margin-top: 0.9rem; font-size: 1.75rem; }
-.card:hover .name { color: var(--brick); }
-.summary { margin: 0.4rem 0; color: var(--ink-soft); }
-.meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; margin: 0; font-size: 0.875rem; color: var(--ink-soft); }

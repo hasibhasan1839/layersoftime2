@@ -1,9 +1,0 @@
-.list { display: grid; gap: 3rem; margin: 0; padding: 0; list-style: none; }
-.entry { display: grid; gap: 1.5rem; }
-.entry h2 { margin-bottom: 0.75rem; }
-.image { width: 100%; height: auto; }
-@media (min-width: 48rem) { .entry { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 2.5rem; } }
-.awards { margin-top: 2rem; }
-.awards h3 { margin-bottom: 1rem; font-size: 1.25rem; }
-.awardGrid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
-.prize { margin: 0 0 0.5rem; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brick); }

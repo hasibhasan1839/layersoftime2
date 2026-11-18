@@ -5,10 +5,13 @@ from .models import (
     Competition,
     CompetitionAward,
     Contact,
+    ContactMessage,
     Drawing,
     InteriorDesign,
     InteriorDesignType,
     Photography,
+    Professional,
+    ProfessionalExpertise,
     Project,
     ProjectImage,
 )
@@ -109,7 +112,39 @@ class CompetitionSerializer(serializers.ModelSerializer):
         ]
 
 
+class ProfessionalExpertiseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProfessionalExpertise
+        fields = ["id", "label", "sorting_order"]
+
+
+class ProfessionalSerializer(serializers.ModelSerializer):
+    expertise = ProfessionalExpertiseSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Professional
+        fields = [
+            "id", "name", "slug", "designation", "photo", "tagline", "bio",
+            "qualifications", "specialization", "experience", "location",
+            "email", "phone_no", "linkedin", "website",
+            "is_active", "expertise", "sorting_order", "created_at", "updated_at",
+        ]
+        read_only_fields = ["slug"]
+
+
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
-        fields = ["id", "address", "email", "phone_no"]
+        fields = ["id", "address", "email", "phone_no", "map_location"]
+
+
+class ContactMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactMessage
+        fields = ["id", "name", "email", "phone_no", "subject", "message", "is_read", "created_at"]
+        read_only_fields = ["created_at"]
+        extra_kwargs = {
+            "name": {"required": True, "allow_blank": False},
+            "email": {"required": True, "allow_blank": False},
+            "message": {"required": True, "allow_blank": False},
+        }

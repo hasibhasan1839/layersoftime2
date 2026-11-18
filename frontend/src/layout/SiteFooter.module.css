@@ -1,2 +1,0 @@
-.footer { margin-top: clamp(3rem, 8vw, 6rem); padding-block: 2.5rem; border-top: 1px solid var(--line); background: var(--plaster-deep); }
-.footer:empty, .footer > div:empty { display: none; }

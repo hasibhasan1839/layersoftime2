@@ -17,7 +17,7 @@ from django.core.management.base import BaseCommand
 
 from api.models import Contact, Drawing, Photography, Project, ProjectImage
 
-IMAGES_DIR = Path(settings.BASE_DIR).parent / "public" / "images"  # the React app's images
+IMAGES_DIR = Path(settings.BASE_DIR).parent / "layersoftime-main" / "public" / "images"  # the React app's images
 
 
 def label_to_value(choices_class):
